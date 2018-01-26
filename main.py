@@ -9,7 +9,7 @@ from time import sleep
 
 
 def trimSoundArr(sounds):
-    threshold = 10
+    threshold = 100
     for n in range(0, len(sounds)):
         #trim front
         for i in range(0, len(sounds[n])):
@@ -31,11 +31,31 @@ trimSoundArr(sounds)
 sounds = [np.asarray(sound) for sound in sounds]
 fps, sound = wavfile.read(os.path.join('sound', 'ff.' + fileNames[0] + '.wav'))
 
-for i in sounds[0]:
-    print(i)
+
 sounds = map(pygame.sndarray.make_sound, sounds)
-#sounds = [pygame.mixer.Sound(os.path.join('sound', 'ff.' + name + '.wav')) for name in fileNames]
+screen = pygame.display.set_mode((150, 150))
 pygame.mixer.init(fps, -16, 1, 2048)
-for sound in sounds:
-    sound.play()
-    sleep(0.5)
+
+with open('kb.kb') as file:
+    keys = [line.strip() for line in file]
+key_sound = dict(zip(keys, sounds))
+is_playing = {k: False for k in keys}
+while True:
+        event = pygame.event.wait()
+
+        if event.type in (pygame.KEYDOWN, pygame.KEYUP):
+            key = pygame.key.name(event.key)
+
+        if event.type == pygame.KEYDOWN:
+            if (key in key_sound.keys()) and (not is_playing[key]):
+                key_sound[key].play()
+                is_playing[key] = True
+
+            elif event.key == pygame.K_ESCAPE:
+                pygame.quit()
+                raise KeyboardInterrupt
+
+        elif event.type == pygame.KEYUP and key in key_sound.keys():
+            # Stops with 50ms fadeout
+            key_sound[key].fadeout(50)
+            is_playing[key] = False
