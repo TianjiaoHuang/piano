@@ -1,9 +1,6 @@
 from scipy.io import wavfile
-import argparse
 import numpy as np
 import pygame
-import sys
-import warnings
 import os
 from time import sleep
 
@@ -33,6 +30,7 @@ fps, sound = wavfile.read(os.path.join('sound', 'ff.' + fileNames[0] + '.wav'))
 
 
 sounds = map(pygame.sndarray.make_sound, sounds)
+sounds = zip(fileNames, sounds)
 screen = pygame.display.set_mode((150, 150))
 pygame.mixer.init(fps, -16, 1, 2048)
 
@@ -48,14 +46,14 @@ while True:
 
         if event.type == pygame.KEYDOWN:
             if (key in key_sound.keys()) and (not is_playing[key]):
-                key_sound[key].play()
+                print(key_sound[key][0])
+                key_sound[key][1].play()
                 is_playing[key] = True
 
             elif event.key == pygame.K_ESCAPE:
                 pygame.quit()
-                raise KeyboardInterrupt
 
         elif event.type == pygame.KEYUP and key in key_sound.keys():
             # Stops with 50ms fadeout
-            key_sound[key].fadeout(50)
+            #key_sound[key][1].fadeout(50)
             is_playing[key] = False
