@@ -52,6 +52,7 @@ while True:
 
             elif event.key == pygame.K_ESCAPE:
                 pygame.quit()
+                break
 
         elif event.type == pygame.KEYUP and key in key_sound.keys():
             # Stops with 50ms fadeout
