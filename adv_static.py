@@ -12,12 +12,13 @@ except ImportError: # Python 3
     izip = zip
     xrange = range
 
-def sine_tone(frequency, duration=2, volume=10, sample_rate=22050):
+def sine_tone(frequency, duration=2, volume=1, sample_rate=22050):
     n_samples = int(sample_rate * duration)
     restframes = n_samples % sample_rate
+    max_volume, offset = 0x7f, 0
 
     s = lambda t: volume * math.sin(2 * math.pi * frequency * t / sample_rate)
-    samples = list(int(s(t) * 0x7f + 0x80) for t in xrange(n_samples))
+    samples = list(int(s(t) * max_volume + offset) for t in xrange(n_samples))
     sound = pygame.sndarray.make_sound(np.asarray(samples, dtype="int8"))
     sound.play()
 
