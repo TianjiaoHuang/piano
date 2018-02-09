@@ -22,9 +22,9 @@ var foo = function(html) {
 
     // write to file
     var fout = fs.createWriteStream('freq.txt')
-    fout.write('keyNumber = [' + "'" + keyNumber.join("','") + "']" + "\n");
-    fout.write('name = [' + "'" + name.join("','") + "']" + "\n");
-    fout.write('freq = [' + "'" + freq.join("','") + "']" + "\n");
+    fout.write('keyNumbers = [' + keyNumber.join() + "]" + "\n");
+    fout.write('names = [' + "'" + name.join("','") + "']" + "\n");
+    fout.write('freqs = [' + freq.join() + "]" + "\n");
     fout.end();
 };
 

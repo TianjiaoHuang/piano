@@ -3,6 +3,7 @@ import numpy as np
 import pygame
 import os
 from time import sleep
+from Sound import getStaticSoundDict
 
 
 def trimSoundArr(sounds):
@@ -29,26 +30,28 @@ sounds = [np.asarray(sound) for sound in sounds]
 fps, sound = wavfile.read(os.path.join('sound', 'ff.' + fileNames[0] + '.wav'))
 
 
-sounds = map(pygame.sndarray.make_sound, sounds)
-sounds = zip(fileNames, sounds)
+#sounds = map(pygame.sndarray.make_sound, sounds)
+#sounds = zip(fileNames, sounds)
+sounds = getStaticSoundDict()
 screen = pygame.display.set_mode((150, 150))
-pygame.mixer.init(fps, -16, 1, 2048)
 
 with open('kb.kb') as file:
     keys = [line.strip() for line in file]
-key_sound = dict(zip(keys, sounds))
+#key_sound = dict(zip(keys, sounds))
+key_sound = sounds
 is_playing = {k: False for k in keys}
 while True:
         event = pygame.event.wait()
 
         if event.type in (pygame.KEYDOWN, pygame.KEYUP):
             key = pygame.key.name(event.key)
+            print('key pressed', key)
 
         if event.type == pygame.KEYDOWN:
-            if (key in key_sound.keys()) and (not is_playing[key]):
-                print(key_sound[key][0])
-                key_sound[key][1].play()
+            if ((key in keys) and (not is_playing[key])):
+                key_sound[keys.index(key)].play()
                 is_playing[key] = True
+                print(key)
 
             elif event.key == pygame.K_ESCAPE:
                 pygame.quit()
