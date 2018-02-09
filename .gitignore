@@ -100,4 +100,6 @@ ENV/
 # mypy
 .mypy_cache/
 
+# misc
 *.kb
+freq.txt
