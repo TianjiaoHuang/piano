@@ -1,7 +1,7 @@
-from scipy.io import wavfile
+#from scipy.io import wavfile
 import numpy as np
 import pygame
-import os
+#import os
 from time import sleep
 from Sound import getStaticSoundDict
 
@@ -21,14 +21,14 @@ def trimSoundArr(sounds):
 
         sounds[n] = sounds[n][i:j]
 
-
+'''
 fileNames = [chr(alph) + str(num) for num in range(1, 7 + 1) for alph in range(ord('A'), ord('G') + 1)]
 sounds = [wavfile.read(os.path.join('sound', 'ff.' + name + '.wav'))[1] for name in fileNames]
 sounds = [[pair[0] for pair in sound] for sound in sounds]
 trimSoundArr(sounds)
 sounds = [np.asarray(sound) for sound in sounds]
 fps, sound = wavfile.read(os.path.join('sound', 'ff.' + fileNames[0] + '.wav'))
-
+'''
 
 #sounds = map(pygame.sndarray.make_sound, sounds)
 #sounds = zip(fileNames, sounds)
