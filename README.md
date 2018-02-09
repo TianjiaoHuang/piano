@@ -2,7 +2,7 @@
 
 The sounds are from [tambien/Piano](https://github.com/tambien/Piano), which are from [Salamander Grand Piano](https://archive.org/details/SalamanderGrandPianoV3). 
 
-##Bad News
+## Bad News
 We might need gloves that made from aluminum foils to play the final version of this piano
 
 ## Reference
