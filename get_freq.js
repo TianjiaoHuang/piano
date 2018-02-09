@@ -12,7 +12,7 @@ var foo = function(html) {
     for (var i = 2 * 2; i < rows.length; i += 2) {
         var cells = rows[i].childNodes;
         keyNumber.push(cells[1].textContent);
-        name.push(cells[5].textContent.match(/[A-G]♯?\d/)[0]);
+        name.push(cells[5].textContent.match(/[A-G]♯?\d/)[0].replace('♯', '#'));
         freq.push(cells[7].textContent);
     }
 

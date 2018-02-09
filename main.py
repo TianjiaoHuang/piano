@@ -40,6 +40,7 @@ with open('kb.kb') as file:
 #key_sound = dict(zip(keys, sounds))
 key_sound = sounds
 is_playing = {k: False for k in keys}
+print('loading complete')
 while True:
         event = pygame.event.wait()
 
