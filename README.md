@@ -5,6 +5,10 @@ The sounds are from [tambien/Piano](https://github.com/tambien/Piano), which are
 ##Bad News
 We might need gloves that made from aluminum foils to play the final version of this piano
 
+## Chips
+MCP23017
+MPR121
+
 ## Reference
 [Zulko/pianoputer](https://github.com/Zulko/pianoputer)\
 [tambien/Piano](https://github.com/tambien/Piano)\
