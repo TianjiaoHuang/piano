@@ -103,3 +103,4 @@ ENV/
 # misc
 *.kb
 freq.txt
+cfg/*.json

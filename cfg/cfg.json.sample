@@ -1,0 +1,22 @@
+{
+    "devices":[
+        [
+            {
+                "type": "Raspberry Pi Master",
+                "binding": {
+                    "1": "C3"
+                }
+
+            }
+            {
+                "type": "MCP23007",
+                "address": 20,
+                "binding": {
+                    "1": "A1"
+                }
+
+            },
+
+        ]
+    ]
+}
