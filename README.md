@@ -6,8 +6,12 @@ The sounds are from [tambien/Piano](https://github.com/tambien/Piano), which are
 We might need gloves that made from aluminum foils to play the final version of this piano
 
 ## Chips
-MCP23017
+MCP23017 <br />
 MPR121
+
+## Installation
+```sudo apt-get install python3-scipy```
+```pip3 install -r requirements.txt```
 
 ## Reference
 [Zulko/pianoputer](https://github.com/Zulko/pianoputer)\

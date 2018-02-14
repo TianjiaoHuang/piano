@@ -21,6 +21,7 @@ class MCP23017:
     def __init__(self, address, busnum=1):
         self.address = address
         self.bus = smbus.SMBus(busnum)
+        self.set_all_pins_to_input()
 
     def write(self, reg, val):
         return self.bus.write_byte_data(self.address, reg, val)

@@ -104,3 +104,4 @@ ENV/
 *.kb
 freq.txt
 cfg/*.json
+test.py
