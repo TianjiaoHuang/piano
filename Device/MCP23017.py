@@ -1,3 +1,5 @@
+from Device import Device
+
 if __name__ != "__main__": 
     import smbus
 
@@ -12,13 +14,14 @@ def each_bit(byte):
         yield mask & byte
         mask << 1
 
-class MCP23017:    
+class MCP23017(Device):    
     IODIRB  =   0x01
     IODIRA  =   0x00
     GPIOA   =   0x12 
     GPIOB   =   0x13 
 
-    def __init__(self, address, busnum=1):
+    def __init__(self, address, sounds, keys, busnum=1):
+        Device(keys, sounds, 16)
         self.address = address
         self.bus = smbus.SMBus(busnum)
         self.set_all_pins_to_input()
@@ -33,10 +36,13 @@ class MCP23017:
         self.write(self.IODIRA, 0xff)
         self.write(self.IODIRB, 0xff)
     
-    def read_all_pins(self):
+    def readAllPins(self):
         lst = list(each_bit(self.read(self.GPIOA)))
         lst.extend(each_bit(self.read(self.GPIOB)))
         return lst
+
+    def updatePins(self):
+        self.pins = self.readAllPins()
 
 if __name__ == "__main__": 
     import doctest

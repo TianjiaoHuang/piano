@@ -1,3 +1,5 @@
+import MCP23017
+
 class Device():
     
     def __init__(self, keys, sounds, numpin):
@@ -5,9 +7,6 @@ class Device():
         self.isPlaying = list(self.pins)
         self.keys = keys
         self.sounds = sounds
-
-    def updateMapping(self, keys):
-        self
 
     def updatePins(self):
         raise NotImplementedError
@@ -32,6 +31,13 @@ class Device():
                 elif (not pin) and self.isPlaying[pin]:
                     self.sounds[self.keys[pin]].fadeout(100)
                     self.isPlaying[pin] = False
+
+    @staticmethod
+    def makeDevice(cfg, sounds):
+        type = cfg['type']
+        if type == 'MCP23017':
+            return MCP23017.MCP23017(cfg['address'], sounds, cfg['bindings'])
+        
 
 
                 

@@ -105,3 +105,4 @@ ENV/
 freq.txt
 cfg/*.json
 test.py
+*.test
