@@ -1,4 +1,8 @@
 # Piano
+## Lesson Learned
+A software guy shall not put his hands on hardware stuff
+
+---
 **Under Development** (I gave up at Valentines Day, 2018(temporarily, I think))(<br />
 Having a hard time dealing with MCP23017 over I2C :(<br />
 We might need aluminum gloves :(<br />
