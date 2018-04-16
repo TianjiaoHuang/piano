@@ -1,6 +1,6 @@
 # Piano
 ## Lesson Learned
-A software guy shall not put his hands on hardware stuff
+**A software guy shall not put his hands on hardware stuff**
 
 ---
 **Under Development** (I gave up at Valentines Day, 2018(temporarily, I think))(<br />
